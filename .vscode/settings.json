@@ -1,0 +1,4 @@
+{
+    // Enable/disable default JavaScript formatter (For Prettier)
+    "javascript.format.enable": false
+}

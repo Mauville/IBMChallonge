@@ -1,3 +1,4 @@
+/* Most of this code is boilerplate, premade */
 .App {
   text-align: center;
 }
@@ -35,4 +36,19 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+h5{
+  color: #666666;
+}
+
+.bill{
+  width: 80%;
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+#flex{
+  display: flex;
+  justify-content: space-around;
 }
