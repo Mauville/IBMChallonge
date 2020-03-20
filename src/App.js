@@ -11,6 +11,7 @@ import "./App.css";
 import {
   TextField,
   Box,
+  Button,
   Paper,
   InputAdornment,
   Container
@@ -20,7 +21,7 @@ function App() {
   return (
     <Container maxWidth="sm" id="biggo">
       <h1>Formulario para Cotización</h1>
-      <form>
+      <form data-persist="garlic" method="get" action="/cotizacion.html">
         {/* Datos Personales */}
         <Paper elevation="2">
           <Container>
@@ -28,7 +29,6 @@ function App() {
             <TextField
               label="Email"
               required
-              data-persist="garlic"
               style={{ margin: 9 }}
               margin="normal"
               InputLabelProps={{
@@ -39,7 +39,6 @@ function App() {
             <TextField
               required
               label="Código Postal"
-              data-persist="garlic"
               style={{ margin: 9 }}
               margin="normal"
               InputLabelProps={{
@@ -58,7 +57,6 @@ function App() {
             <TextField
               required
               style={{ margin: 9 }}
-              data-persist="garlic"
               label="Fecha de Inicio del Periodo"
               type="date"
               format="DD-MM-YYYY"
@@ -69,7 +67,6 @@ function App() {
             <TextField
               required
               label="Energía del Primer Periodo"
-              data-persist="garlic"
               style={{ margin: 9 }}
               InputProps={{
                 startAdornment: (
@@ -80,7 +77,6 @@ function App() {
             <TextField
               required
               label="Energía del Segundo Periodo"
-              data-persist="garlic"
               style={{ margin: 9 }}
               InputProps={{
                 startAdornment: (
@@ -91,7 +87,6 @@ function App() {
             <TextField
               required
               label="Energía del Tercer Periodo"
-              data-persist="garlic"
               style={{ margin: 9 }}
               InputProps={{
                 startAdornment: (
@@ -102,7 +97,6 @@ function App() {
             <TextField
               required
               label="Energía del Cuarto Periodo"
-              data-persist="garlic"
               style={{ margin: 9 }}
               InputProps={{
                 startAdornment: (
@@ -113,7 +107,6 @@ function App() {
             <TextField
               required
               label="Energía del Quinto Periodo"
-              data-persist="garlic"
               style={{ margin: 9 }}
               InputProps={{
                 startAdornment: (
@@ -124,7 +117,6 @@ function App() {
             <TextField
               required
               label="Energía del Sexto Periodo"
-              data-persist="garlic"
               style={{ margin: 9 }}
               InputProps={{
                 startAdornment: (
@@ -137,14 +129,25 @@ function App() {
         {/* Appliances */}
         <Paper elevation="2">
           <Container>
-            <h5> ¿Con cuántos de los siguientes electrodomésticos cuenta usted? </h5>
+            <h5>
+              {" "}
+              ¿Con cuántos de los siguientes electrodomésticos cuenta usted?{" "}
+            </h5>
             <Box display="flex" justifyContent="space-around">
               <ImageInput title="Arrocera" alt="Arrocera" src={arroz} />
               <ImageInput title="Cafetera" alt="Cafetera" src={coffee} />
-              <ImageInput title="Foco Circular" alt="Foco Circular" src={light} />
+              <ImageInput
+                title="Foco Circular"
+                alt="Foco Circular"
+                src={light}
+              />
             </Box>
           </Container>
         </Paper>
+        <br />
+        <Button variant="contained" color="primary">
+          Obtener Cotización
+        </Button>
       </form>
     </Container>
   );
