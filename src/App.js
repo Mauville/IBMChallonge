@@ -26,15 +26,7 @@ function App() {
         <Paper elevation="2">
           <Container>
             <h5>Datos Personales</h5>
-            <TextField
-              label="Email"
-              required
-              style={{ margin: 9 }}
-              margin="normal"
-              InputLabelProps={{
-                shrink: true
-              }}
-            ></TextField>
+            <TextField label="Email" required style={{ margin: 9 }} margin="normal" InputLabelProps={{ shrink: true }} ></TextField>
             <br />
             <TextField
               required

@@ -1,0 +1,95 @@
+﻿= SuaderoSolar
+:icons: font
+// Enable fancy admonition icons on GH
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+
+
+= Contributing
+
+IMPORTANT: Use terminal git, not the bloated GUI version. 
+
+The workflow is as follows:
+
+. Update (or clone) the local repo
+. Create new local issue branch
+. Hack away
+. Commit and push to a new server branch
+. Create pull request
+. (Solve feedback)
+. Delete local branch
+
+If you don't have git and/or hub, run in Powershell with admin rights:
+
+[source, powershell]
+----
+Set-ExecutionPolicy AllSigned
+----
+
+then
+
+[source, powershell]
+----
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+choco install git hub -y
+----
+
+. Clone if this is the first time modifying the codebase.
++
+[source, powershell]
+----
+git clone https://github.com/Mauville/SuaderoSolar.git
+cd SuaderoSolar
+git fetch origin
+git checkout -b dev origin/dev
+----
++
+. Create new feature branch
++
+[source, powershell]
+----
+git checkout -b {your-name}
+----
++
+. Begin making changes. Create a lot of commits. Once finished, add, commit and push changes.
++
+IMPORTANT: The commit message (the string between the quotes) should describe what you did.
++
+[source, powershell]
+----
+git add *
+git commit -m '{COMMIT MESSAGE}'
+----
++
+. Push & create a pull request with necessary info
++
+NOTE: You can get the branch name using `git branch`
++
+[source, powershell]
+----
+git push --set-upstream origin <branch name>
+hub pull-request -m "{Main Feature}" -m "{Description of feature}" -b Mauville:dev
+----
++
+At this point, you should wait for feedback. If there are changes to make, add, commit and push again but do not create another PR.
++
+. If your changes got accepted and merged into `dev`, delete your feature branch from local so next time you work you start clean.
++
+[source, powershell]
+----
+git checkout dev
+git branch -d <branch name>
+----
++
+. When you are ready to tackle another issue, be sure to get the latest changes before you create a new feature branch from `dev`.
++
+[source, powershell]
+----
+git pull
+----
+

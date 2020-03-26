@@ -5,6 +5,7 @@ const app = express();
 
 let appRoutes = require('./routes/app');
 
+// Send Questionnaire as homepage
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname,'build')));
 app.use('/', appRoutes);
