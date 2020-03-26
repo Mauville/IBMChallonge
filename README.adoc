@@ -1,7 +1,6 @@
 ﻿= SuaderoSolar 🌮
 :icons: font
 :sectanchors:
-:sectlinks:
 // Enable fancy admonition icons on GH
 ifdef::env-github[]
 :tip-caption: :bulb:
