@@ -1,0 +1,46 @@
+Que usuarios vamos a tener. Admin, cotizador e instalador.
+
+Que hay acerca de los resultados de la cotizacion. 
+    para el cliente
+        * Numero de paneles
+        * Baterias necesarias
+        * Tamano del inversor
+
+        Si usted cambia sus habitos, podria reducir su consumo en aprox.
+        Su inversion va a regresar en x anos.
+
+    para el instalador
+
+        se pueden acceder a las cotizaciones con un numero?
+        como se acceden a los tickets?
+
+        [*] Numero de paneles
+        [*] Baterias necesarias
+        * Tamano del inversor
+        * Controladores
+
+    Un correo para la cotizacion para el instalador.
+    Un correo para el usuario
+    Una manera de autenticar dichos correos.
+
+Comentar acerca de la confiabilidad de las API
+    Probablemente algunas sean de paga
+    
+    * si las apis se caen fallback a promedios dados.
+    * no problem with attributions
+
+
+Evolucion previsible del sistema? 
+
+    * Agregar un bloque donde se pueda cotizar con distintos proveedores.
+    * integracion con un sitio web
+
+
+El cuestionario no esta completo
+Cada hogar teien distintos habitos de consumo
+Cosas que son muy usadas pero no contempladas
+Agregar extras y luego volverlas comunes
+
+Falta agregar potencia para el script
+El script ya es final
+
