@@ -1,4 +1,4 @@
-﻿== SuaderoSolar 🌮
+﻿= SuaderoSolar 🌮
 :icons: font
 // Enable fancy admonition icons on GH
 ifdef::env-github[]
@@ -10,7 +10,7 @@ ifdef::env-github[]
 endif::[]
 
 
-= Contributing
+== Contributing with git
 
 IMPORTANT: Use terminal git, not the bloated GUI version. 
 
@@ -62,6 +62,8 @@ IMPORTANT: The commit message (the string between the quotes) should describe wh
 +
 [source, powershell]
 ----
+# Remove unnecesary spaces to cleanup code
+git stripspace
 git add *
 git commit -m '{COMMIT MESSAGE}'
 ----
@@ -93,3 +95,111 @@ git branch -d <branch name>
 git pull
 ----
 
+
+
+== Setup and Runnning 
+
+You need to download some dependencies to begin working on this!
+IMPORTANT: You can only use these instructions if you installed git with the method above! Else, you have to install node manually.
+
+[source, powershell]
+----
+# In the project directory
+cinst node -y
+refreshenv
+npm i 
+----
+
+To run the website as a whole, it's not as simple as just opening an HTML file. You need to run a server to get the front and backend working.
+[source, powershell]
+----
+# In the project directory after the dependency installs
+nodemon ./server.js
+----
+
+When modifying React front-end, you can mount a miniserver to preview it on the browser
+[source, powershell]
+----
+# In the project directory after the dependency installs
+npm start
+----
+
+When readying front-end changes to commit, be sure to get your react build into production
+[source, powershell]
+----
+# In the project directory after the dependency installs
+npm build
+----
+
+
+
+== Important Resources
+
+For the backend overall tutorials:
+
+https://www.github.com/Mauville/GoodExpress
+
+Here you can find almost everything on how the backend works.
+
+For how to work on the front-end:
+
+video::https://www.youtube.com/watch?v=zIY87vU33aA[]
+
+Use material-UI https://material-ui.com[Material-UI] for the front-end
+
+=== Front-end Ideas
+====
+Forms UX
+https://uxdesign.cc/the-ux-behind-designing-better-forms-d6ebe7a817d2
+https://uxdesign.cc/11-form-design-guidelines-4b2f1c659414
+https://cxl.com/blog/mobile-forms/
+
+Components for forms
+https://styled-components.com/
+
+Form persistence (Antifuckups)
+https://garlicjs.org/
+
+Form Validation
+https://jaredpalmer.com/formik/docs/overview this is better since it already takes into account react
+https://dev.to/finallynero/react-form-using-formik-material-ui-and-yup-2e8h thisthisthis
+
+Form Autofilling
+https://medium.com/dev-channel/improving-mobile-web-conversions-just-by-optimizing-web-forms-1d846bed42f
+https://developers.google.com/web/updates/2015/06/checkout-faster-with-autofill
+
+	Automatic city filling
+	https://blog.logrocket.com/detect-location-and-local-timezone-of-users-in-javascript-3d9523c011b9/
+
+Use steppers for progress tracking
+https://material-ui.com/components/steppers/
+
+Use input spinners for the appliances numbers
+https://www.jqueryscript.net/blog/best-number-input-spinner.html
+https://shaack.com/projekte/bootstrap-input-spinner/
+
+Tesseract.js to OCR the bill and get data (Optional but a biiiiig plus)
+https://blog.logrocket.com/how-to-extract-text-from-an-image-using-javascript-8fe282fb0e71/
+https://medium.com/panya-studio-engineering/eliminating-manual-data-entry-using-ocr-to-convert-images-to-text-tesseract-js-react-1099d20a4f4
+
+Express Tuts
+https://github.com/Mauville/GoodExpress
+====
+
+=== Setup VSCode for programming efficiency
+[source, powershell]
+----
+code --install-extension dbaeumer.vscode-eslint
+----
+In VSCode, CTRL + , to open User Settings and add this to enable auto-prettify on save:
+[source, json]
+----
+{
+    // Format a file on save. A formatter must be available, the file must not be auto-saved, and editor must not be shutting down.
+    "editor.formatOnSave": true,
+    // Enable/disable default JavaScript formatter (For Prettier)
+    "javascript.format.enable": false,
+    // Use 'prettier-eslint' instead of 'prettier'. Other settings will only be fallbacks in case they could not be inferred from eslint rules.
+    "prettier.eslintIntegration": true
+}
+----
