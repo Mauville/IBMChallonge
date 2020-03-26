@@ -1,4 +1,4 @@
-﻿= SuaderoSolar
+﻿﻿= SuaderoSolar
 :icons: font
 // Enable fancy admonition icons on GH
 ifdef::env-github[]
