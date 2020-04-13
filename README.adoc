@@ -25,11 +25,13 @@ refreshenv
 npm i 
 ----
 
-To run the website as a whole, it's not as simple as just opening an HTML file. You need to run a server to get the front and backend working.
+IMPORTANT: Since we are using APIs, keys need to be stored safely. Ask the project manager for the .env file and put in in the root. The project won't run without them.
+
+To run the website as a whole, mount the server.
 [source, powershell]
 ----
 # In the project directory after the dependency installs
-nodemon ./server.js
+npm run server
 ----
 
 When modifying React front-end, you can mount a miniserver to preview it on the browser
