@@ -59,29 +59,37 @@ function getIrradiation(lat, lon, startDate, endDate) {
       lon: lon,
       outputList: "JSON"
     })
-    .then((res, err) => {
-      if (err) {
-        return console.log("NASA API Error", err);
-      }
-      // These debugging lines cost a bit of time. Prints only when debug is enables in .env
-      if (process.env.DEBUG === "true") {
-        var args = [].slice.call(arguments);
-        console.log("LOGGER: getIrradiation(" + args + ")");
-        console.dir(JSON.parse(res.text), { depth: null, colors: true });
-      }
+    .timeout({
+      response: 9000, // Wait 9 seconds for the server to start sending,
+      deadline: 60000 // but allow 1 minute for the file to finish loading.
+    })
+    .then(
+      res => {
+        // These debugging lines cost a bit of time. Prints only when debug is enables in .env
+        if (process.env.DEBUG === "true") {
+          var args = [].slice.call(arguments);
+          console.log("LOGGER: getIrradiation(" + args + ")");
+          console.dir(JSON.parse(res.text), { depth: null, colors: true });
+        }
+        // Data from the NASA comes in a special structure. Darn Rocket Scientists.
+        // {
+        //   features: [ { geometry: [Object], properties: [Object], type: 'Feature' } ],
+        //   ...,
+        //   ...,
+        // }
 
-      // Data from the NASA comes in a special structure. Darn Rocket Scientists.
-      // {
-      //   features: [ { geometry: [Object], properties: [Object], type: 'Feature' } ],
-      //   ...,
-      //   ...,
-      // }
-
-      // It's on properties where the relevant irradiation data  is stored, further under parameter and ALLSKY_SFC_SW_DWN
-      const rawdata = JSON.parse(res.text);
-      const props = rawdata.features[0].properties;
-      return props.parameter.ALLSKY_SFC_SW_DWN;
-    });
+        // It's on properties where the relevant irradiation data  is stored, further under parameter and ALLSKY_SFC_SW_DWN
+        const rawdata = JSON.parse(res.text);
+        const props = rawdata.features[0].properties;
+        return props.parameter.ALLSKY_SFC_SW_DWN;
+      },
+      // else, it's probably a timeout
+      err => {
+        if (err.timeout) {
+          return console.log("NASA API Timeout", err);
+        }
+      }
+    );
 }
 
 const arr = [19.4881, -99.0884, 20190101, 20200101];
