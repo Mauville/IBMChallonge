@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Mail from "../mailer/mail";
+import Mail from "../models/mailer/mail";
 
 ReactDOM.render(
   <Mail panels="10" batteries="11" inversors="2" ages={11} />,
