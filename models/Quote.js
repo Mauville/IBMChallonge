@@ -1,24 +1,25 @@
+import { getMonthlyIrradiation } from "./Irradiation";
+
 let moment = require("moment");
 moment().format();
 
 const getInfo = formJSON => {
   formJSON = sanitize(formJSON);
-  return getQuote(formJSON);
+  return quote(formJSON);
 };
 
 const sanitize = formJSON => {
   // Extra sanitization steps go here.
+  formJSON.string_date = formJSON.date;
   formJSON.date = moment(formJSON.date);
   return formJSON;
 };
 
-const getIR = (date,zip) =>{
-    
-}
 
-// let JSONQuest = {
+// JSONQuest = {
 //   mail: "",
 //   zip: "",
+//   string_date: "",
 //   date: "",
 //   energy: [], //ints
 //   rice: "",
@@ -26,7 +27,7 @@ const getIR = (date,zip) =>{
 //   circ: ""
 // };
 
-const getQuote = JSONQuest => {
+const quote = JSONQuest => {
   ////// Compatibility code made to adapt to existing codebase
   let day = JSONQuest.date.date();
   let month = JSONQuest.date.month();
@@ -286,7 +287,7 @@ const getQuote = JSONQuest => {
 
   let PDmax = Math.min(...pdArray);
 
-  let irArr = getIR(JSONQuest.date, JSONQuest.zip);
+  let irArr = getMonthlyIrradiation(JSONQuest.string_date, JSONQuest.zip);
   let feArray = [];
 
   for (let i = 0; i < 12; i++) {
@@ -295,6 +296,6 @@ const getQuote = JSONQuest => {
 
   let fEmin = Math.min(...feArray);
 
-  // What really returns here?
+  //TODO ask client what really returns here?
   return { PDmax, fEmin };
 };

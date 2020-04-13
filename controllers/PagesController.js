@@ -15,9 +15,8 @@ exports.answers = (req, res) => {
     coffee: req.body.coffee,
     circ: req.body.circ
   };
-  //VALIDATE DATA
-  // Send to script.js
   console.log(data);
+  // Send to script.js
   // Send Mails
   res.send(req.body);
 };

@@ -1,8 +1,8 @@
 // Get EnvVars from .env file
 require("dotenv").config();
+require("pretty-error").start();
 // JSON API getter and parser
 const superagent = require("superagent");
-require("pretty-error").start();
 // Safe API key handling
 let kagui = process.env.LOCATIONIQ_KEY;
 
@@ -11,7 +11,7 @@ let kagui = process.env.LOCATIONIQ_KEY;
  * @param {string} zipcode - A zipcode
  * @return {Object} An object containing lat and lon coordinates
  */
-function getCoordinates(zipcode) {
+const getCoordinates = zipcode => {
   superagent
     .get("https://us1.locationiq.com/v1/search.php")
     //Query parameters    https://locationiq.com/docs-html/index.html?javascript#forward_query-parameters
@@ -32,7 +32,7 @@ function getCoordinates(zipcode) {
       }
       return { lat: res.text.lat, lon: res.text.lon };
     });
-}
+};
 
 /**
  * Fetches Sky Insolation Incidence on Horizontal Surface indexes from the NASA Power API
@@ -42,7 +42,7 @@ function getCoordinates(zipcode) {
  * @param {string} endDate - A string denoting the enddate of the period in the form YYYYMMDD
  * @returns {Object} An object containing ordered pairs of day of the year with their corresponding Sky Insolation Incidence on Horizontal Surface indexes
  */
-function getIrradiation(lat, lon, startDate, endDate) {
+const getIrradiationData = (lat, lon, startDate, endDate) => {
   superagent
     .get("https://power.larc.nasa.gov/cgi-bin/v1/DataAccess.py")
     .query({
@@ -67,8 +67,7 @@ function getIrradiation(lat, lon, startDate, endDate) {
       res => {
         // These debugging lines cost a bit of time. Prints only when debug is enables in .env
         if (process.env.DEBUG === "true") {
-          var args = [].slice.call(arguments);
-          console.log("LOGGER: getIrradiation(" + args + ")");
+          console.log("LOGGER: getIrradiation()");
           console.dir(JSON.parse(res.text), { depth: null, colors: true });
         }
         // Data from the NASA comes in a special structure. Darn Rocket Scientists.
@@ -90,7 +89,26 @@ function getIrradiation(lat, lon, startDate, endDate) {
         }
       }
     );
-}
+};
 
-const arr = [19.4881, -99.0884, 20190101, 20200101];
-getIrradiation(...arr);
+//TODO ask client what goes here
+
+export const getMonthlyIrradiation = (startingDate, zip) => {
+  return [
+    5.003548387,
+    5.772222222,
+    6.595483871,
+    6.714,
+    6.467741935,
+    5.284333333,
+    5.263548387,
+    5.962903226,
+    5.022758621,
+    4.628064516,
+    4.680666667,
+    4.708387097
+  ];
+};
+
+// const arr = [19.4881, -99.0884, 20190101, 20200101];
+// getIrradiationData(...arr);
