@@ -210,19 +210,3 @@ https://github.com/Mauville/GoodExpress
 
 ====
 
-=== Setup VSCode for programming efficiency 😎
-[source, powershell]
-----
-code --install-extension dbaeumer.vscode-eslint
-----
-In VSCode, CTRL + , to open User Settings and add this to enable auto-prettify on save:
-[source, json]
-----
-{
-    "editor.formatOnSave": true,
-    "javascript.format.enable": false,
-    "prettier.eslintIntegration": true
-}
-----
-
-~Mauville
