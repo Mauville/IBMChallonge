@@ -299,3 +299,5 @@ const quote = JSONQuest => {
   //TODO ask client what really returns here?
   return { PDmax, fEmin };
 };
+
+export default  quote;

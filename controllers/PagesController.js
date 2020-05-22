@@ -1,3 +1,5 @@
+import quote from "../helpers/Quote";
+
 exports.answers = (req, res) => {
   let data = {
     mail: req.body.mail,
@@ -18,5 +20,7 @@ exports.answers = (req, res) => {
   console.log(data);
   // Send to script.js
   // Send Mails
+  quote(data);
+  
   res.send(req.body);
 };
