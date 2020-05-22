@@ -1,5 +1,5 @@
-import quote from "../helpers/Quote";
 import { check } from "express-validator";
+import getInfo from "../helpers/Quote";
 
 exports.answers = (req, res) => {
   check("mail")
@@ -71,7 +71,7 @@ exports.answers = (req, res) => {
   console.log(data);
   // Send to script.js
   // Send Mails
-  quote(data);
+  let varia = getInfo(data);
 
   res.send(req.body);
 };

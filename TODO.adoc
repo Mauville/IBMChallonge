@@ -8,4 +8,4 @@
 ** [x] Link irradiation
 ** [ ] Link mail
 ** [ ] Link coordinator
-* [ ] Connect the data base
+* [ ] Connect the database

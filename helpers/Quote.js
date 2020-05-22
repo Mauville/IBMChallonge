@@ -299,4 +299,4 @@ const quote = JSONQuest => {
   return { PDmax, fEmin };
 };
 
-export default  quote;
+export default  getInfo;
