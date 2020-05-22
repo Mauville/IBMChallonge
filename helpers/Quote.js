@@ -9,7 +9,6 @@ const getInfo = formJSON => {
 };
 
 const sanitize = formJSON => {
-  // Extra sanitization steps go here.
   formJSON.string_date = formJSON.date;
   formJSON.date = moment(formJSON.date);
   return formJSON;

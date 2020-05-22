@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from './ThankYou';
+import App from './App.js';
 // import Mail from "../helpers/mailer/mail";
 
 ReactDOM.render(
