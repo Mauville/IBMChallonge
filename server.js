@@ -8,6 +8,8 @@ let appRoutes = require('./routes/app');
 // Send Questionnaire as homepage
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname,'build')));
+app.use(express.urlencoded());
 app.use('/', appRoutes);
+
 
 app.listen(port);
