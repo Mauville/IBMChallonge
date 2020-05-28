@@ -19,15 +19,15 @@ import {
 
 function App() {
   return (
-    <Container maxWidth="sm" id="biggo">
-      <h1>Formulario para Cotización</h1>
+    <Container maxWidth="sm" id="biggo" >
+      <h1 align="center">Formulario para Cotización</h1>
       <form data-persist="garlic" method="get" action="/cotizacion.html">
         {/* Datos Personales */}
         <Paper elevation="2">
           <Container>
-            <h5>Datos Personales</h5>
+            <h4>Datos Personales</h4>
             <TextField label="Email" required style={{ margin: 9 }} margin="normal" InputLabelProps={{ shrink: true }} ></TextField>
-            <br />
+            
             <TextField
               required
               label="Código Postal"
@@ -42,23 +42,28 @@ function App() {
         {/* Receipt */}
         <Paper elevation="2">
           <Container>
-            <h5>Informacion de Consumo</h5>
+            <h4>Informacion de Consumo</h4>
             <Container maxWidth="sm">
               <img className="bill" src={bill} alt="Bill"></img>
             </Container>
+            {/* Inicio del periodo */}
             <TextField
               required
               style={{ margin: 9 }}
+
               label="Fecha de Inicio del Periodo"
+              
               type="date"
               format="DD-MM-YYYY"
               InputLabelProps={{
                 shrink: true
               }}
             />
+            {/*Energia del primer Periodo */}
             <TextField
               required
               label="Energía del Primer Periodo"
+              Texto
               style={{ margin: 9 }}
               InputProps={{
                 startAdornment: (
