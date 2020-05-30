@@ -56,3 +56,12 @@ h5{
 .Texto{
   margin-right: 12px
 }
+
+.background-blue {
+  background-color: blue;
+}
+
+.borders {
+  border-Radius:10;
+  border-Width: 1;
+}

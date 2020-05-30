@@ -19,11 +19,11 @@ import {
 
 function App() {
   return (
-    <Container maxWidth="sm" id="biggo" >
+    <Container maxWidth="sm" id="biggo"style={{backgroundColor:"gainsboro",borderRadius:10}} >
       <h1 align="center">Formulario para Cotización</h1>
       <form data-persist="garlic" method="get" action="/cotizacion.html">
         {/* Datos Personales */}
-        <Paper elevation="2">
+        <Paper elevation="4"style={{backgroundColor:"whitesmoke",borderRadius:10}}>
           <Container>
             <h4>Datos Personales</h4>
             <TextField label="Email" required style={{ margin: 9 }} margin="normal" InputLabelProps={{ shrink: true }} ></TextField>
@@ -40,7 +40,7 @@ function App() {
           </Container>
         </Paper>
         {/* Receipt */}
-        <Paper elevation="2">
+        <Paper elevation="4"style={{backgroundColor:"whitesmoke",borderRadius:10}}>
           <Container>
             <h4>Informacion de Consumo</h4>
             <Container maxWidth="sm">
@@ -49,10 +49,8 @@ function App() {
             {/* Inicio del periodo */}
             <TextField
               required
-              style={{ margin: 9 }}
-
+              style={{ margin: 9}}
               label="Fecha de Inicio del Periodo"
-              
               type="date"
               format="DD-MM-YYYY"
               InputLabelProps={{
@@ -63,7 +61,6 @@ function App() {
             <TextField
               required
               label="Energía del Primer Periodo"
-              Texto
               style={{ margin: 9 }}
               InputProps={{
                 startAdornment: (
@@ -124,25 +121,20 @@ function App() {
           </Container>
         </Paper>
         {/* Appliances */}
-        <Paper elevation="2">
+        <Paper elevation="4"style={{backgroundColor:"whitesmoke",borderRadius:10}}>
           <Container>
-            <h5>
-              {" "}
+            <h4>
               ¿Con cuántos de los siguientes electrodomésticos cuenta usted?{" "}
-            </h5>
-            <Box display="flex" justifyContent="space-around">
-              <ImageInput title="Arrocera" alt="Arrocera" src={arroz} />
+            </h4>
+            <Box display="flex" justifyContent="center"style={{borderRadius:4,marginTop:-20}}>
+              <ImageInput title="Arrocera" alt="Arrocera" src={arroz}  />
               <ImageInput title="Cafetera" alt="Cafetera" src={coffee} />
-              <ImageInput
-                title="Foco Circular"
-                alt="Foco Circular"
-                src={light}
-              />
+              <ImageInput title="Focos" alt="Focos" src={light}/>
             </Box>
           </Container>
         </Paper>
         <br />
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="Primary" elevation="2">
           Obtener Cotización
         </Button>
       </form>
