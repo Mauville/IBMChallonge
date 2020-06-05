@@ -7,7 +7,7 @@ import { border } from "@material-ui/system";
 
 function App() {
   return (
-    <Container maxWidth="md" id="biggo" style={{backgroundColor:"lightblue",borderRadius:10}}>
+    <Container maxWidth="md" id="biggo" style={{backgroundColor:"gainsboro",borderRadius:10}}>
       {/*This manages the text inside the container */ }
       <Paper align="center" elevation="3" style={{backgroundColor: "lightgrey",borderRadius:10}} >
       <h1 align="center" style={{backgroundColor: "lightgrey",borderRadius:10}}>Formulario para Cotización</h1>

@@ -4,7 +4,7 @@ import React from "react";
 import bill from "./img/bill.jpg";
 import arroz from "./img/arroz.jpg";
 import coffee from "./img/coffee.jpg";
-import light from "./img/light.png";
+import light from "./img/foco.png";
 
 import ImageInput from "./cpt/ImageInput.js";
 import "./App.css";
@@ -53,15 +53,17 @@ function App() {
               label="Fecha de Inicio del Periodo"
               type="date"
               format="DD-MM-YYYY"
-              InputLabelProps={{
-                shrink: true
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start"> -----> </InputAdornment>
+                )
               }}
             />
             {/*Energia del primer Periodo */}
             <TextField
               required
               label="Energía del Primer Periodo"
-              style={{ margin: 9 }}
+              style={{ margin: 9}}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">kWh</InputAdornment>
@@ -126,9 +128,9 @@ function App() {
             <h4>
               ¿Con cuántos de los siguientes electrodomésticos cuenta usted?{" "}
             </h4>
-            <Box display="flex" justifyContent="center"style={{borderRadius:4,marginTop:-20}}>
-              <ImageInput title="Arrocera" alt="Arrocera" src={arroz}  />
-              <ImageInput title="Cafetera" alt="Cafetera" src={coffee} />
+            <Box display="flex"  justifyContent="center"style={{borderRadius:4,marginTop:-20}}>
+              <ImageInput title="Arroceras" alt="Arroceras" src={arroz}   />
+              <ImageInput title="Cafeteras" alt="Cafeteras" src={coffee} />
               <ImageInput title="Focos" alt="Focos" src={light}/>
             </Box>
           </Container>
