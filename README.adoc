@@ -11,26 +11,131 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
+== Contributing with Git ❓
+
+IMPORTANT: Use terminal git, not the bloated GUI version. 
+
+The workflow is as follows:
+
+. Update (or clone) the local repo
+. Create new local issue branch
+. Hack away
+. Commit and push to a new server branch
+. Create pull request
+. (Solve feedback)
+. Delete local branch
+
+If you don't have git and/or hub, run in Powershell with admin rights:
+
+[source, powershell]
+----
+Set-ExecutionPolicy AllSigned
+----
+
+then
+
+[source, powershell]
+----
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+choco install git hub -y
+----
+Else, download https://git-scm.com/downloads[git] and https://github.com/github/hub/releases[hub]
+
+. Clone if this is the first time modifying the codebase.
++
+[source, powershell]
+----
+git clone https://github.com/Mauville/SuaderoSolar.git
+cd SuaderoSolar
+git fetch origin
+git checkout -b dev origin/dev
+----
++
+. Create new feature branch
++
+[source, powershell]
+----
+git checkout -b {your-name}
+----
++
+. Begin making changes. . Once finished, add changes and create a commit.
+IMPORTANT: Create a lot of commits between medium changes such as functions and big control structures.
++
+IMPORTANT: The commit message (the string between the quotes) should describe what you did.
++
+[source, powershell]
+----
+git add *
+git commit -m 'COMMIT MESSAGE'
+----
++
+. Push & create a pull request with necessary info.
++
+NOTE: You can get the branch name using `git branch`
++
+[source, powershell]
+----
+git push --set-upstream origin {BRANCH_NAME}
+hub pull-request -m "{Main Feature}" -m "{Description of feature}" -b Mauville:dev
+----
++
+At this point, you should wait for feedback. If there are changes to make, add, commit and push again but do not create another PR.
++
+. If your changes got accepted and merged into `dev`, delete your feature branch from local so next time you work you start clean.
++
+[source, powershell]
+----
+git checkout dev
+git branch -d <branch name>
+----
++
+. When you are ready to tackle another issue, be sure to get the latest changes before you create a new feature branch from `dev` (This means starting from Step 2.
++
+[source, powershell]
+----
+git pull
+----
+
+
+
 == Setup, Run, Build 🛠
 
 You need to download some dependencies to begin working on this!
 
-IMPORTANT: You can only use these instructions if you installed git with the method below! Else, you have to install node manually.
+First, https://nodejs.org/en/download/[install Node.js.]
+If you have https://chocolatey.org/[choco] installed (you have if you followed the setup for the git installation below), you can run:
 
 [source, powershell]
 ----
 # In the project directory
 cinst node -y
 refreshenv
-npm i 
 ----
 
-To run the website as a whole, it's not as simple as just opening an HTML file. You need to run a server to get the front and backend working.
+Then, install the dependencies. **It should finish with no errors but some warning are perfectly fine.**
+
+[source, powershell]
+----
+# In the project directory
+npm i 
+----
+For performance reasons, production builds of the site are not commited. You will need to build the site for your local version.
+[source, powershell]
+----
+# In the project directory
+npm run build
+----
+
+IMPORTANT: Since we are using APIs, keys need to be stored safely. Ask the project manager for the .env file and put in in the root. The project won't run without them.
+
+To run the website as a whole, mount the server.
 [source, powershell]
 ----
 # In the project directory after the dependency installs
-nodemon ./server.js
+npm run server
 ----
+
+=== Front-End
 
 When modifying React front-end, you can mount a miniserver to preview it on the browser
 [source, powershell]
@@ -39,12 +144,6 @@ When modifying React front-end, you can mount a miniserver to preview it on the 
 npm start
 ----
 
-When readying front-end changes to commit, be sure to get your react build into production
-[source, powershell]
-----
-# In the project directory after the dependency installs
-npm build
-----
 
 
 == Important Resources 📖
@@ -53,7 +152,7 @@ npm build
 
 * For how to work on the front-end, you can watch the first hour of https://www.youtube.com/watch?v=zIY87vU33aA[this video] 
 
-* Use material-UI https://material-ui.com[Material-UI] for the front-end.
+* Use https://material-ui.com[Material-UI] for the front-end.
 
 === Front-end Ideas 💡
 ====
@@ -111,104 +210,3 @@ https://github.com/Mauville/GoodExpress
 
 ====
 
-=== Setup VSCode for programming efficiency 😎
-[source, powershell]
-----
-code --install-extension dbaeumer.vscode-eslint
-----
-In VSCode, CTRL + , to open User Settings and add this to enable auto-prettify on save:
-[source, json]
-----
-{
-    "editor.formatOnSave": true,
-    "javascript.format.enable": false,
-    "prettier.eslintIntegration": true
-}
-----
-
-== Contributing with Git ❓
-
-IMPORTANT: Use terminal git, not the bloated GUI version. 
-
-The workflow is as follows:
-
-. Update (or clone) the local repo
-. Create new local issue branch
-. Hack away
-. Commit and push to a new server branch
-. Create pull request
-. (Solve feedback)
-. Delete local branch
-
-If you don't have git and/or hub, run in Powershell with admin rights:
-
-[source, powershell]
-----
-Set-ExecutionPolicy AllSigned
-----
-
-then
-
-[source, powershell]
-----
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-choco install git hub -y
-----
-
-. Clone if this is the first time modifying the codebase.
-+
-[source, powershell]
-----
-git clone https://github.com/Mauville/SuaderoSolar.git
-cd SuaderoSolar
-git fetch origin
-git checkout -b dev origin/dev
-----
-+
-. Create new feature branch
-+
-[source, powershell]
-----
-git checkout -b {your-name}
-----
-+
-. Begin making changes. Create a lot of commits. Once finished, add, commit and push changes.
-+
-IMPORTANT: The commit message (the string between the quotes) should describe what you did.
-+
-[source, powershell]
-----
-# Remove unnecesary spaces to cleanup code
-git stripspace
-git add *
-git commit -m '{COMMIT MESSAGE}'
-----
-+
-. Push & create a pull request with necessary info
-+
-NOTE: You can get the branch name using `git branch`
-+
-[source, powershell]
-----
-git push --set-upstream origin <branch name>
-hub pull-request -m "{Main Feature}" -m "{Description of feature}" -b Mauville:dev
-----
-+
-At this point, you should wait for feedback. If there are changes to make, add, commit and push again but do not create another PR.
-+
-. If your changes got accepted and merged into `dev`, delete your feature branch from local so next time you work you start clean.
-+
-[source, powershell]
-----
-git checkout dev
-git branch -d <branch name>
-----
-+
-. When you are ready to tackle another issue, be sure to get the latest changes before you create a new feature branch from `dev`.
-+
-[source, powershell]
-----
-git pull
-----
-
-~Mauville

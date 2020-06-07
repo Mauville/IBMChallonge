@@ -1,0 +1,11 @@
+= TODO
+
+
+* [ ] Get an SMTP server
+* [ ] Get the routing flowing
+* [ ] Get the script working
+** [x] Sanitize JSON
+** [x] Link irradiation
+** [ ] Link mail
+** [ ] Link coordinator
+* [ ] Connect the database

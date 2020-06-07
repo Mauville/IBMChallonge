@@ -4,7 +4,7 @@ import React from "react";
 import bill from "./img/bill.jpg";
 import arroz from "./img/arroz.jpg";
 import coffee from "./img/coffee.jpg";
-import light from "./img/light.png";
+import light from "./img/foco.png";
 
 import ImageInput from "./cpt/ImageInput.js";
 import "./App.css";
@@ -19,15 +19,15 @@ import {
 
 function App() {
   return (
-    <Container maxWidth="sm" id="biggo">
-      <h1>Formulario para Cotización</h1>
+    <Container maxWidth="sm" id="biggo"style={{backgroundColor:"gainsboro",borderRadius:10}} >
+      <h1 align="center">Formulario para Cotización</h1>
       <form data-persist="garlic" method="get" action="/cotizacion.html">
         {/* Datos Personales */}
-        <Paper elevation="2">
+        <Paper elevation="4"style={{backgroundColor:"whitesmoke",borderRadius:10}}>
           <Container>
-            <h5>Datos Personales</h5>
+            <h4>Datos Personales</h4>
             <TextField label="Email" required style={{ margin: 9 }} margin="normal" InputLabelProps={{ shrink: true }} ></TextField>
-            <br />
+            
             <TextField
               required
               label="Código Postal"
@@ -40,26 +40,30 @@ function App() {
           </Container>
         </Paper>
         {/* Receipt */}
-        <Paper elevation="2">
+        <Paper elevation="4"style={{backgroundColor:"whitesmoke",borderRadius:10}}>
           <Container>
-            <h5>Informacion de Consumo</h5>
+            <h4>Informacion de Consumo</h4>
             <Container maxWidth="sm">
               <img className="bill" src={bill} alt="Bill"></img>
             </Container>
+            {/* Inicio del periodo */}
             <TextField
               required
-              style={{ margin: 9 }}
+              style={{ margin: 9}}
               label="Fecha de Inicio del Periodo"
               type="date"
               format="DD-MM-YYYY"
-              InputLabelProps={{
-                shrink: true
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start"> -----> </InputAdornment>
+                )
               }}
             />
+            {/*Energia del primer Periodo */}
             <TextField
               required
               label="Energía del Primer Periodo"
-              style={{ margin: 9 }}
+              style={{ margin: 9}}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">kWh</InputAdornment>
@@ -119,25 +123,20 @@ function App() {
           </Container>
         </Paper>
         {/* Appliances */}
-        <Paper elevation="2">
+        <Paper elevation="4"style={{backgroundColor:"whitesmoke",borderRadius:10}}>
           <Container>
-            <h5>
-              {" "}
+            <h4>
               ¿Con cuántos de los siguientes electrodomésticos cuenta usted?{" "}
-            </h5>
-            <Box display="flex" justifyContent="space-around">
-              <ImageInput title="Arrocera" alt="Arrocera" src={arroz} />
-              <ImageInput title="Cafetera" alt="Cafetera" src={coffee} />
-              <ImageInput
-                title="Foco Circular"
-                alt="Foco Circular"
-                src={light}
-              />
+            </h4>
+            <Box display="flex"  justifyContent="center"style={{borderRadius:4,marginTop:-20}}>
+              <ImageInput title="Arroceras" alt="Arroceras" src={arroz}   />
+              <ImageInput title="Cafeteras" alt="Cafeteras" src={coffee} />
+              <ImageInput title="Focos" alt="Focos" src={light}/>
             </Box>
           </Container>
         </Paper>
         <br />
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="Primary" elevation="2">
           Obtener Cotización
         </Button>
       </form>

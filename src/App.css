@@ -43,7 +43,7 @@ h5{
 }
 
 .bill{
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   padding: 0 auto;
 }
@@ -51,4 +51,17 @@ h5{
 #flex{
   display: flex;
   justify-content: space-around;
+}
+
+.Texto{
+  margin-right: 12px
+}
+
+.background-blue {
+  background-color: blue;
+}
+
+.borders {
+  border-Radius:10;
+  border-Width: 1;
 }
