@@ -38,23 +38,21 @@
   }
 }
 
-h5{
+h5 {
   color: #666666;
 }
 
-.bill{
+.bill {
   width: 100%;
-  margin: 0 auto;
-  padding: 0 auto;
 }
 
-#flex{
+#flex {
   display: flex;
   justify-content: space-around;
 }
 
-.Texto{
-  margin-right: 12px
+.Texto {
+  margin-right: 12px;
 }
 
 .background-blue {
@@ -62,6 +60,6 @@ h5{
 }
 
 .borders {
-  border-Radius:10;
-  border-Width: 1;
+  border-radius: 10px;
+  border-width: 1px;
 }

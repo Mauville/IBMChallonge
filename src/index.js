@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from './App.js';
+import App from "./ThankYou.js";
 // import Mail from "../helpers/mailer/mail";
 
 ReactDOM.render(
@@ -10,5 +10,3 @@ ReactDOM.render(
   // <Mail panels="10" batteries="11" inversors="2" ages={11} />,
   document.getElementById("root")
 );
-
-

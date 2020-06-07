@@ -19,15 +19,39 @@ import {
 
 function App() {
   return (
-    <Container maxWidth="sm" id="biggo"style={{backgroundColor:"gainsboro",borderRadius:10}} >
+    <Container
+      maxWidth="sm"
+      id="biggo"
+      style={{
+        backgroundColor: "#eeeeee",
+        borderRadius: 10,
+        paddingTop: 1,
+        marginTop: 20
+      }}
+    >
       <h1 align="center">Formulario para Cotización</h1>
       <form data-persist="garlic" method="get" action="/cotizacion.html">
         {/* Datos Personales */}
-        <Paper elevation="4"style={{backgroundColor:"whitesmoke",borderRadius:10}}>
+        <Paper
+          elevation="4"
+          style={{
+            backgroundColor: "whitesmoke",
+            borderRadius: 10,
+            paddingTop: 1,
+            paddingBottom: 10,
+            marginBottom: 2
+          }}
+        >
           <Container>
             <h4>Datos Personales</h4>
-            <TextField label="Email" required style={{ margin: 9 }} margin="normal" InputLabelProps={{ shrink: true }} ></TextField>
-            
+            <TextField
+              label="Email"
+              required
+              style={{ margin: 9 }}
+              margin="normal"
+              InputLabelProps={{ shrink: true }}
+            ></TextField>
+
             <TextField
               required
               label="Código Postal"
@@ -40,7 +64,16 @@ function App() {
           </Container>
         </Paper>
         {/* Receipt */}
-        <Paper elevation="4"style={{backgroundColor:"whitesmoke",borderRadius:10}}>
+        <Paper
+          elevation="4"
+          style={{
+            backgroundColor: "whitesmoke",
+            borderRadius: 10,
+            paddingTop: 1,
+            paddingBottom: 10,
+            marginTop: 10
+          }}
+        >
           <Container>
             <h4>Informacion de Consumo</h4>
             <Container maxWidth="sm">
@@ -49,21 +82,24 @@ function App() {
             {/* Inicio del periodo */}
             <TextField
               required
-              style={{ margin: 9}}
+              style={{ margin: 9 }}
               label="Fecha de Inicio del Periodo"
               type="date"
               format="DD-MM-YYYY"
               InputProps={{
                 startAdornment: (
-                  <InputAdornment position="start"> -----> </InputAdornment>
+                  <InputAdornment position="start" style={{ marginTop: 7 }}>
+                    {" "}
+                  </InputAdornment>
                 )
               }}
             />
+            <br />
             {/*Energia del primer Periodo */}
             <TextField
               required
               label="Energía del Primer Periodo"
-              style={{ margin: 9}}
+              style={{ margin: 9 }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">kWh</InputAdornment>
@@ -123,20 +159,38 @@ function App() {
           </Container>
         </Paper>
         {/* Appliances */}
-        <Paper elevation="4"style={{backgroundColor:"whitesmoke",borderRadius:10}}>
+        <Paper
+          elevation="4"
+          style={{
+            backgroundColor: "whitesmoke",
+            borderRadius: 10,
+            paddingTop: 1,
+            paddingBottom: 10,
+            marginTop: 10
+          }}
+        >
           <Container>
             <h4>
               ¿Con cuántos de los siguientes electrodomésticos cuenta usted?{" "}
             </h4>
-            <Box display="flex"  justifyContent="center"style={{borderRadius:4,marginTop:-20}}>
-              <ImageInput title="Arroceras" alt="Arroceras" src={arroz}   />
+            <Box
+              display="flex"
+              justifyContent="center"
+              style={{ borderRadius: 4, marginTop: -20 }}
+            >
+              <ImageInput title="Arroceras" alt="Arroceras" src={arroz} />
               <ImageInput title="Cafeteras" alt="Cafeteras" src={coffee} />
-              <ImageInput title="Focos" alt="Focos" src={light}/>
+              <ImageInput title="Focos" alt="Focos" src={light} />
             </Box>
           </Container>
         </Paper>
         <br />
-        <Button variant="contained" color="Primary" elevation="2">
+        <Button
+          variant="contained"
+          color="Primary"
+          elevation="2"
+          style={{ marginBottom: 15 }}
+        >
           Obtener Cotización
         </Button>
       </form>
