@@ -1,9 +1,10 @@
-import { getMonthlyIrradiation } from "./Irradiation";
+// import { getMonthlyIrradiation } from "./Irradiation";
+let irradiation = require("./Irradiation")
 
 let moment = require("moment");
 moment().format();
 
-const getInfo = formJSON => {
+exports.getInfo = formJSON => {
   formJSON = sanitize(formJSON);
   return quote(formJSON);
 };
@@ -286,7 +287,7 @@ const quote = JSONQuest => {
 
   let PDmax = Math.min(...pdArray);
 
-  let irArr = getMonthlyIrradiation(JSONQuest.string_date, JSONQuest.zip);
+  let irArr = irradiation.getMonthlyIrradiation(JSONQuest.string_date, JSONQuest.zip);
   let feArray = [];
 
   for (let i = 0; i < 12; i++) {
@@ -295,8 +296,13 @@ const quote = JSONQuest => {
 
   let fEmin = Math.min(...feArray);
 
-  //TODO ask client what really returns here?
-  return { PDmax, fEmin };
+  //Client's final formula goes here
+  // return { PDmax, fEmin };
+  // Dummy data for now
+  return { 
+    "panels": 4,
+    "batteries": 4,
+    "inversors": 7
+  };
 };
 
-export default  getInfo;

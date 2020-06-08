@@ -30,7 +30,7 @@ function App() {
       }}
     >
       <h1 align="center">Formulario para Cotización</h1>
-      <form data-persist="garlic" method="get" action="/cotizacion.html">
+      <form data-persist="garlic" method="POST" action="/cotizacion">
         {/* Datos Personales */}
         <Paper
           elevation="4"
@@ -188,8 +188,10 @@ function App() {
         <Button
           variant="contained"
           color="Primary"
+          type="Submit"
           elevation="2"
           style={{ marginBottom: 15 }}
+          
         >
           Obtener Cotización
         </Button>

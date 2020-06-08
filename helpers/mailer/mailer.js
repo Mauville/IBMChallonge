@@ -63,8 +63,7 @@ async function main(paneles, baterias, inversores, years, address) {
 }
 
 
-let sendMail = (panels, batteries, inversors, years, address)=>{
+exports.sendMail = (panels, batteries, inversors, years, address)=>{
   main(panels, batteries, inversors, years,  address).catch(console.error);
 }
 
-export default sendMail;

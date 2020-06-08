@@ -2,6 +2,7 @@
 let router = require('express').Router();
 let PagesController = require('../controllers/PagesController');
 
-router.post('/cotizacion.html', PagesController.answers);
+
+router.post('/cotizacion', PagesController.answers);
 
 module.exports = router;

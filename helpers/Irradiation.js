@@ -93,7 +93,7 @@ const getIrradiationData = (lat, lon, startDate, endDate) => {
 
 //TODO ask client what goes here
 
-export const getMonthlyIrradiation = (startingDate, zip) => {
+exports.getMonthlyIrradiation = (startingDate, zip) => {
   return [
     5.003548387,
     5.772222222,
@@ -109,6 +109,3 @@ export const getMonthlyIrradiation = (startingDate, zip) => {
     4.708387097
   ];
 };
-
-// const arr = [19.4881, -99.0884, 20190101, 20200101];
-// getIrradiationData(...arr);
