@@ -3,6 +3,6 @@ let router = require('express').Router();
 let PagesController = require('../controllers/PagesController');
 
 
-router.post('/cotizacion', PagesController.answers);
+router.post('/api/vote', PagesController.answers);
 
 module.exports = router;
